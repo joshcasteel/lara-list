@@ -16,3 +16,5 @@ Route::get('/', function () {
 });
 
 Route::get('/tasks', 'TaskController@index');
+Route::get('/tasks/{task}', 'TaskController@show');
+Route::get('/tasks/{task}/edit', 'TaskController@edit');
