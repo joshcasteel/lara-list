@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">    
         <form action="/tasks" method="post">
-            {{ csrf_field() }}
+            @csrf
             <label for="title">Title</label>
             <input type="text" name="title">
             <label for="description">Description</label>

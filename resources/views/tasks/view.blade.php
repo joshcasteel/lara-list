@@ -12,7 +12,7 @@
     <button type="submit" class="btn">Edit</button>
     </form>
     <form action="/tasks/{{ $tasks->id }}/delete" method="post">
-        {{ csrf_field() }}
+        @csrf
         @method('delete')
         <button type="submit" class="btn red">Delete</button>
     </form>

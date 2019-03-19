@@ -14,7 +14,7 @@ class TaskController extends Controller
     }
     public function show($id)
     {
-        $tasks = Task::find($id);    
+        $tasks = Task::findOrFail($id);    
         return view('tasks.view', compact('tasks'));
     }
     public function edit($id)
@@ -24,7 +24,7 @@ class TaskController extends Controller
     }
     public function update($id)
     {
-        $tasks = Task::find($id);
+        $tasks = Task::findOrFail($id);
         $tasks->title = request('title');
         $tasks->description = request('description');
         $tasks->save();
