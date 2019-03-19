@@ -7,6 +7,14 @@
     <title>Lara-List</title>
 </head>
 <body>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo center">Lara-List</a>
+            <ul id="nav-mobile" class="left hide-on-med-and-down">
+            <li><a href="/tasks">Home</a></li>
+            <li><a href="/tasks/create">Create New</a></li>
+        </div>
+    </nav>
     @yield('content')
 </body>
 </html>
