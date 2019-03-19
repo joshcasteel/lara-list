@@ -30,4 +30,21 @@ class TaskController extends Controller
         $tasks->save();
         return redirect('/tasks');
     }
+    public function create()
+    {
+        return view('tasks/create');
+    }
+    public function store()
+    {
+        $tasks = new Task;
+        $tasks->title = request('title');
+        $tasks->description = request('description');
+        $tasks->save();
+        return redirect('/tasks');
+    }
+    public function destroy($id) {
+        $tasks = Task::find($id);
+        $tasks->delete();
+        return redirect('/tasks');
+    }
 }

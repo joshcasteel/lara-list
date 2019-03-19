@@ -4,12 +4,17 @@
 <div class="container">
     <form action="/tasks/{{ $tasks->id }}/edit" method="get">
     <label for="title">Title</label>
-    <textarea name="title" id="name" cols="30" rows="10" disabled>{{ $tasks->title }}</textarea>
-        
+    <h5>{{$tasks->title}}</h5>
+    <br/>    
     <label for="description">Description</label>
-    <textarea name="description" id="description" cols="30" rows="10" disabled>{{ $tasks->description }}</textarea>
-
+    <h5>{{ $tasks->description }}</h5>
+    <br/>
     <button type="submit" class="btn">Edit</button>
+    </form>
+    <form action="/tasks/{{ $tasks->id }}/delete" method="post">
+        {{ csrf_field() }}
+        @method('delete')
+        <button type="submit" class="btn red">Delete</button>
     </form>
 </div>
 @endsection
