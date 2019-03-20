@@ -12,22 +12,20 @@ class TaskController extends Controller
         $tasks = Task::all();
         return view('tasks.index', compact('tasks'));
     }
-    public function show($id)
+    public function show(Task $task)
     {
-        $tasks = Task::findOrFail($id);    
-        return view('tasks.view', compact('tasks'));
+          
+        return view('tasks.view', compact('task'));
     }
-    public function edit($id)
+    public function edit(Task $task)
     {
-        $tasks = Task::find($id);    
-        return view('tasks.edit', compact('tasks'));
+          
+        return view('tasks.edit', compact('task'));
     }
-    public function update($id)
+    public function update(Task $task)
     {
-        $tasks = Task::findOrFail($id);
-        $tasks->title = request('title');
-        $tasks->description = request('description');
-        $tasks->save();
+        $task->update(request((['title', 'description'])));
+        
         return redirect('/tasks');
     }
     public function create()
@@ -36,15 +34,11 @@ class TaskController extends Controller
     }
     public function store()
     {
-        $tasks = new Task;
-        $tasks->title = request('title');
-        $tasks->description = request('description');
-        $tasks->save();
+        Task::create(request(['title', 'description']));
         return redirect('/tasks');
     }
-    public function destroy($id) {
-        $tasks = Task::find($id);
-        $tasks->delete();
+    public function destroy(Task $task) {
+        $task->delete();
         return redirect('/tasks');
     }
 }
