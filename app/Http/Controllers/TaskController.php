@@ -34,8 +34,13 @@ class TaskController extends Controller
     }
     public function store()
     {
+        request()->validate([
+            'title' => ['required', 'min:3'],
+            'description' => ['required', 'min:10']
+        ]);
         Task::create(request(['title', 'description']));
         return redirect('/tasks');
+
     }
     public function destroy(Task $task) {
         $task->delete();
